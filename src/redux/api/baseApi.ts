@@ -11,7 +11,8 @@ import { RootState } from "../store";
 import { logout } from "../feature/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/v1",
+    //baseUrl: "http://localhost:5000/api/v1",
+    baseUrl: "https://gift-gallery-server.vercel.app/api/v1",
 
     credentials: "include",
     prepareHeaders: (headers, { getState }) => {
@@ -31,7 +32,8 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     let result = await baseQuery(args, api, extraOptions);
     if (result.error?.status === 401) {
         const res = await fetch(
-            "http://localhost:5000/api/v1/auth/refresh-token",
+            //"http://localhost:5000/api/v1/auth/refresh-token",
+            "https://gift-gallery-server.vercel.app/api/v1/auth/refresh-token",
 
             {
                 method: "POST",

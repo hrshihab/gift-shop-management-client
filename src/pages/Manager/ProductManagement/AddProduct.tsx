@@ -109,7 +109,7 @@ const AddProduct = () => {
     };
 
     return (
-        <div className="flex flex-col w-4/5 mx-auto rounded-lgmax-w-20  justify-start gap-4">
+        <div className="flex flex-col w-4/5 mx-auto rounded-lg  justify-start gap-4">
             <div>
                 <h2 className="text-center bg-white py-3 text-3xl font-bold rounded">
                     Add New Gift
