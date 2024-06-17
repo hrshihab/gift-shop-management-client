@@ -15,7 +15,6 @@ import { useCreateInvoiceMutation } from "../redux/feature/Invoice/invoice.api";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
 import { clearCart } from "../redux/feature/cart/cartSlice";
-import { removeCoupon } from "../redux/feature/coupon/couponSlice";
 import { Link } from "react-router-dom";
 
 const Checkout = () => {
@@ -114,7 +113,6 @@ const Checkout = () => {
             if (res.success) {
                 toast.success("Products Sold Successfully", { id: toastId });
                 dispatch(clearCart());
-                dispatch(removeCoupon());
                 navigate(`/products/cart/check-out/invoice/${res.data._id}`);
             } else {
                 toast.error("Failed to sell products", { id: toastId });

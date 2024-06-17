@@ -7,7 +7,6 @@ import {
     decreaseCart,
     removeFromCart,
 } from "../redux/feature/cart/cartSlice";
-import { TCoupon } from "../redux/feature/coupon/couponSlice";
 
 import { useNavigate } from "react-router";
 
@@ -15,47 +14,9 @@ const calculateTotalAmount = (cartItems: TCartItem[]) => {
     return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 };
 
-const calculateDiscount = (totalAmount: number, coupon: TCoupon) => {
-    if (!coupon) {
-        return 0;
-    }
-
-    const currentDate = new Date().toISOString().split("T")[0];
-    if (coupon.startDate > currentDate || coupon.expiryDate < currentDate) {
-        return 0;
-    }
-
-    let discountAmount = 0;
-    if (coupon.minOrder > totalAmount) {
-        discountAmount = 0;
-    } else if (coupon.haveMaxDiscount === true && coupon.maxDiscount) {
-        if (coupon.discountType === "percentage") {
-            const tempDiscountAmount =
-                (totalAmount * coupon.discountAmount) / 100;
-
-            if (tempDiscountAmount > coupon.maxDiscount) {
-                discountAmount = coupon.maxDiscount;
-            } else {
-                discountAmount = tempDiscountAmount;
-            }
-        } else {
-            discountAmount = coupon.discountAmount;
-        }
-    } else {
-        if (coupon.discountType === "percentage") {
-            discountAmount = (totalAmount * coupon.discountAmount) / 100;
-        } else {
-            discountAmount = coupon.discountAmount;
-        }
-    }
-
-    return discountAmount;
-};
-
 const Cart = () => {
     const navigate = useNavigate();
     const cart = useAppSelector((state) => state.cart);
-    const coupon = useAppSelector((state) => state.coupon);
     const dispatch = useAppDispatch();
 
     const handleAddToCart = (product: TCartItem) => {
@@ -191,20 +152,6 @@ const Cart = () => {
                         <hr className="border-[--secondary-color] my-3" />
                         <div className="flex justify-between font-extrabold text-[16px]">
                             <span className="font-bold">Total</span>
-                            <span className="font-bold">
-                                &#2547;{" "}
-                                {Math.round(
-                                    calculateTotalAmount(cart.cartItems) -
-                                        (coupon.couponDetails
-                                            ? calculateDiscount(
-                                                  calculateTotalAmount(
-                                                      cart.cartItems,
-                                                  ),
-                                                  coupon.couponDetails,
-                                              )
-                                            : 0),
-                                ).toFixed(2)}
-                            </span>
                         </div>
                         <div className="flex justify-center mt-10">
                             <button

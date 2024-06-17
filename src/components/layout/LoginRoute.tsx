@@ -4,7 +4,7 @@ import { useCurrentToken } from "../../redux/feature/auth/authSlice";
 import { Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
-const HiddenRouteAfterLogin = ({ children }: { children: ReactNode }) => {
+const LoginRoute = ({ children }: { children: ReactNode }) => {
     const token = useAppSelector(useCurrentToken);
 
     if (token) {
@@ -23,4 +23,4 @@ const HiddenRouteAfterLogin = ({ children }: { children: ReactNode }) => {
     return <>{children}</>;
 };
 
-export default HiddenRouteAfterLogin;
+export default LoginRoute;

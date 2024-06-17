@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
-import HiddenRouteAfterLogin from "../components/layout/HiddenRouteAfterLogin";
+import LoginRoute from "../components/layout/LoginRoute";
 import { routeGenerator } from "../utils/routeGenerator";
 import { managerPaths } from "./manager.routes";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
@@ -60,25 +60,25 @@ const router = createBrowserRouter([
     {
         path: "/login",
         element: (
-            <HiddenRouteAfterLogin>
+            <LoginRoute>
                 <Login />
-            </HiddenRouteAfterLogin>
+            </LoginRoute>
         ),
     },
     {
         path: "/register",
         element: (
-            <HiddenRouteAfterLogin>
+            <LoginRoute>
                 <Registration />
-            </HiddenRouteAfterLogin>
+            </LoginRoute>
         ),
     },
     {
         path: "/forget-password",
         element: (
-            <HiddenRouteAfterLogin>
+            <LoginRoute>
                 <ForgetPassword />
-            </HiddenRouteAfterLogin>
+            </LoginRoute>
         ),
     },
     {
