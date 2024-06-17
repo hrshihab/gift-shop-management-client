@@ -13,13 +13,11 @@ import { verifyToken } from "../utils/verifyToken";
 import { TUser } from "../types";
 import { useCreateInvoiceMutation } from "../redux/feature/Invoice/invoice.api";
 import { toast } from "sonner";
-import { useNavigate } from "react-router";
 import { clearCart } from "../redux/feature/cart/cartSlice";
 import { Link } from "react-router-dom";
 
 const Checkout = () => {
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
 
     const token = useAppSelector(useCurrentToken);
     const cartItems = useAppSelector((state) => state.cart.cartItems);
@@ -113,7 +111,6 @@ const Checkout = () => {
             if (res.success) {
                 toast.success("Products Sold Successfully", { id: toastId });
                 dispatch(clearCart());
-                navigate(`/products/cart/check-out/invoice/${res.data._id}`);
             } else {
                 toast.error("Failed to sell products", { id: toastId });
             }

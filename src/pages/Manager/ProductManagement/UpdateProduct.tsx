@@ -126,7 +126,7 @@ const UpdateProduct = () => {
     };
 
     return (
-        <div className="flex flex-col justify-start gap-4">
+        <div className="flex flex-col w-4/5 mx-auto rounded-lg justify-start gap-4">
             {isProductDataLoading === false ? (
                 <>
                     <div>
