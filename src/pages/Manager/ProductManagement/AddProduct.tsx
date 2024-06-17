@@ -87,7 +87,7 @@ const AddProduct = () => {
 
         try {
             const res = await addNewProduct(formData).unwrap();
-            console.log(res);
+
             if (res.success) {
                 navigate("/manager/gift-list");
                 toast.success("Product Created Successfully", {

@@ -23,7 +23,7 @@ const Registration = () => {
         };
         try {
             const res = await register(userInfo).unwrap();
-            // console.log(res);
+
             if (res.success === false) {
                 toast.error(res.message, {
                     id: toastId,

@@ -98,7 +98,6 @@ const FilterView = () => {
     };
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        // console.log(data);
         const query = {
             name: data.name ? data.name : "",
             minPrice: data.minPrice ? Number(data.minPrice) : 0,
