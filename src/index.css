@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background-color: #e3f2fd; /* Light Blue */
+    --primary-color: #fdfdfd; /* Blue */
+    --secondary-color: #636363; /* Dark Blue */
+    --tertiary-color: #c62828; /* Red */
+    --warning-color: #fb672d; /* Yellow */
+    --disabled-color: #9e9e9e; /* Grey */
+
+    background-color: #f0f0f0be; /* Light Blue */
+}
