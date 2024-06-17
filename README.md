@@ -1,4 +1,3 @@
-/*
 # Gift Shop Management Client
 
 This is the client-side application for the Gift Shop Management system built using React. This project allows users to manage gifts in a shop, view gift details, add new gifts, and update existing gifts.
